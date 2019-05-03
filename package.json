@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "ava --verbose",
-    "format": "prettier-standard '{src,test}/**/*.js'",
-    "precommit": "lint-staged"
+    "format": "prettier-standard '{src,test}/**/*.js'"
   },
   "keywords": ["data","structures"],
   "author": "Justin Fuller <justindanielfuller@gmail.com>",
@@ -24,5 +23,10 @@
         "git add"
       ]
     }  
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
