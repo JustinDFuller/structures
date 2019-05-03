@@ -6,7 +6,7 @@
   "scripts": {
     "test": "ava --verbose",
     "format": "prettier-standard '{src,test}/**/*.js'",
-    "pre-commit": "lint-staged"
+    "precommit": "lint-staged"
   },
   "keywords": ["data","structures"],
   "author": "Justin Fuller <justindanielfuller@gmail.com>",
