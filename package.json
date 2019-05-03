@@ -1,0 +1,28 @@
+{
+  "name": "structures",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava --verbose",
+    "format": "prettier-standard '{src,test}/**/*.js'",
+    "pre-commit": "lint-staged"
+  },
+  "keywords": ["data","structures"],
+  "author": "Justin Fuller <justindanielfuller@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "ava": "^1.4.1",
+    "husky": "^2.2.0",
+    "lint-staged": "^8.1.5",
+    "prettier-standard": "^9.1.1"
+  },
+  "lint-staged": {
+    "linters": {
+      "{src,test}/**/*.js": [
+        "prettier-standard",
+        "git add"
+      ]
+    }  
+  }
+}
