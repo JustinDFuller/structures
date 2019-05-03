@@ -135,3 +135,27 @@ test('linkedList::reverse reverses the order of the list', function (t) {
     }
   )
 })
+
+test('linkedList::insert adds a value when predicate is true', function (t) {
+  t.deepEqual(
+    linkedList()
+      .push(1)
+      .push(2)
+      .push(4)
+      .insert(i => i > 1, 3)
+      .first(),
+    {
+      value: 1,
+      next: {
+        value: 2,
+        next: {
+          value: 3,
+          next: {
+            value: 4,
+            next: null
+          }
+        }
+      }
+    }
+  )
+})

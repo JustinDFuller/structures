@@ -72,6 +72,23 @@ module.exports = function linkedList () {
 
       return methods
     },
+    insert (predicate, value) {
+      let node = root
+
+      while (node) {
+        if (predicate(node.value)) {
+          node.next = {
+            value,
+            next: node.next
+          }
+          break
+        }
+
+        node = node.next
+      }
+
+      return methods
+    },
     find (predicate) {
       let node = root
 
