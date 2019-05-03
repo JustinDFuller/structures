@@ -44,6 +44,34 @@ module.exports = function linkedList () {
 
       return methods
     },
+    map (iteratee) {
+      let node = root
+
+      while (node) {
+        node.value = iteratee(node.value)
+        node = node.next
+      }
+
+      return methods
+    },
+    reverse () {
+      function swap (node, next) {
+        const previous = node
+        const current = next || node.next
+        const remaining = (current && current.next) || null
+        current.next = previous
+
+        if (!remaining) {
+          return current
+        }
+
+        return swap(current, remaining)
+      }
+
+      root = swap({ value: root.value, next: null }, root.next)
+
+      return methods
+    },
     find (predicate) {
       let node = root
 

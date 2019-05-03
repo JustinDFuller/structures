@@ -93,3 +93,45 @@ test('linkedList::find returns the first node where predicate returns truthy', f
     }
   )
 })
+
+test('linkedList::map replaces all values with result of iteratee', function (t) {
+  t.deepEqual(
+    linkedList()
+      .push(1)
+      .push(2)
+      .push(3)
+      .map(i => i * 2)
+      .first(),
+    {
+      value: 2,
+      next: {
+        value: 4,
+        next: {
+          value: 6,
+          next: null
+        }
+      }
+    }
+  )
+})
+
+test('linkedList::reverse reverses the order of the list', function (t) {
+  t.deepEqual(
+    linkedList()
+      .push(1)
+      .push(2)
+      .push(3)
+      .reverse()
+      .first(),
+    {
+      value: 3,
+      next: {
+        value: 2,
+        next: {
+          value: 1,
+          next: null
+        }
+      }
+    }
+  )
+})
