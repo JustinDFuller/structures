@@ -1,3 +1,16 @@
+function swapNodes (node, next) {
+  const previous = node
+  const current = next || node.next
+  const remaining = (current && current.next) || null
+  current.next = previous
+
+  if (!remaining) {
+    return current
+  }
+
+  return swapNodes(current, remaining)
+}
+
 module.exports = function linkedList () {
   let root = {
     next: null,
@@ -55,20 +68,7 @@ module.exports = function linkedList () {
       return methods
     },
     reverse () {
-      function swap (node, next) {
-        const previous = node
-        const current = next || node.next
-        const remaining = (current && current.next) || null
-        current.next = previous
-
-        if (!remaining) {
-          return current
-        }
-
-        return swap(current, remaining)
-      }
-
-      root = swap({ value: root.value, next: null }, root.next)
+      root = swapNodes({ value: root.value, next: null }, root.next)
 
       return methods
     },
