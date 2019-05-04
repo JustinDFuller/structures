@@ -180,3 +180,21 @@ test('linkedList::from creates a linked list from an array', function (t) {
     }
   )
 })
+
+test('linkedList::shift removes the first node from the list', function (t) {
+  const list = linkedList()
+    .push(1)
+    .push(2)
+  t.deepEqual(list.shift(), {
+    value: 1,
+    next: {
+      value: 2,
+      next: null
+    }
+  })
+  t.deepEqual(list.first(), list.shift())
+  t.deepEqual(list.first(), {
+    value: undefined,
+    next: null
+  })
+})
