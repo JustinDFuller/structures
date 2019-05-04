@@ -1,39 +1,32 @@
-function swapNodes (node, next) {
-  const previous = node
-  const current = next || node.next
-  const remaining = (current && current.next) || null
-  current.next = previous
-
-  if (!remaining) {
-    return current
+function createNode (value = undefined, next = null) {
+  return {
+    value,
+    next
   }
+}
 
-  return swapNodes(current, remaining)
+function isEmpty (node) {
+  return node.value === undefined && node.next === null
 }
 
 module.exports = function linkedList () {
-  let root = {
-    next: null,
-    value: undefined
-  }
+  let root = createNode()
 
   const list = {
     push (value) {
-      if (!root.value && !root.next) {
+      if (isEmpty(root)) {
         root.value = value
       } else {
-        list.last().next = {
-          value,
-          next: null
-        }
+        list.last().next = createNode(value)
       }
 
       return list
     },
     prepend (value) {
-      root = {
-        value,
-        next: root
+      if (isEmpty(root)) {
+        root.value = value
+      } else {
+        root = createNode(value, root)
       }
 
       return list
@@ -67,7 +60,16 @@ module.exports = function linkedList () {
       return list
     },
     reverse () {
-      root = swapNodes({ value: root.value, next: null }, root.next)
+      const reversed = linkedList()
+
+      let node = list.shift()
+
+      while (node) {
+        reversed.prepend(node.value)
+        node = node.next ? list.shift() : null
+      }
+
+      root = reversed.first()
 
       return list
     },
@@ -76,10 +78,7 @@ module.exports = function linkedList () {
 
       while (node) {
         if (predicate(node.value)) {
-          node.next = {
-            value,
-            next: node.next
-          }
+          node.next = createNode(value, node.next)
           break
         }
 
@@ -94,6 +93,11 @@ module.exports = function linkedList () {
       }
 
       return list
+    },
+    shift () {
+      const node = root
+      root = node.next || createNode()
+      return node
     },
     find (predicate) {
       let node = root
