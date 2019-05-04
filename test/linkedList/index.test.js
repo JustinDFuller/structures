@@ -159,3 +159,24 @@ test('linkedList::insert adds a value when predicate is true', function (t) {
     }
   )
 })
+
+test('linkedList::from creates a linked list from an array', function (t) {
+  t.deepEqual(
+    linkedList()
+      .from([1, 2, 3, 4])
+      .first(),
+    {
+      value: 1,
+      next: {
+        value: 2,
+        next: {
+          value: 3,
+          next: {
+            value: 4,
+            next: null
+          }
+        }
+      }
+    }
+  )
+})

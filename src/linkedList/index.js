@@ -17,18 +17,18 @@ module.exports = function linkedList () {
     value: undefined
   }
 
-  const methods = {
+  const list = {
     push (value) {
       if (!root.value && !root.next) {
         root.value = value
       } else {
-        methods.last().next = {
+        list.last().next = {
           value,
           next: null
         }
       }
 
-      return methods
+      return list
     },
     prepend (value) {
       root = {
@@ -36,7 +36,7 @@ module.exports = function linkedList () {
         next: root
       }
 
-      return methods
+      return list
     },
     filter (predicate) {
       let node = root
@@ -48,14 +48,13 @@ module.exports = function linkedList () {
             node.next = node.next.next
           } else {
             node.value = undefined
-            node.next = null
           }
         }
 
         node = node.next
       }
 
-      return methods
+      return list
     },
     map (iteratee) {
       let node = root
@@ -65,12 +64,12 @@ module.exports = function linkedList () {
         node = node.next
       }
 
-      return methods
+      return list
     },
     reverse () {
       root = swapNodes({ value: root.value, next: null }, root.next)
 
-      return methods
+      return list
     },
     insert (predicate, value) {
       let node = root
@@ -87,7 +86,14 @@ module.exports = function linkedList () {
         node = node.next
       }
 
-      return methods
+      return list
+    },
+    from (array) {
+      for (let i = 0; i < array.length; i++) {
+        list.push(array[i])
+      }
+
+      return list
     },
     find (predicate) {
       let node = root
@@ -116,5 +122,5 @@ module.exports = function linkedList () {
     }
   }
 
-  return methods
+  return list
 }
