@@ -88,8 +88,8 @@ module.exports = function linkedList () {
       return list
     },
     from (array) {
-      for (let i = 0; i < array.length; i++) {
-        list.push(array[i])
+      for (let i = array.length - 1; i >= 0; i--) {
+        list.prepend(array[i])
       }
 
       return list
