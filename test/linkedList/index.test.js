@@ -238,3 +238,12 @@ test('linkedList is an iterator', function (t) {
 
   t.deepEqual(results, [1, 2, 3])
 })
+
+test('linkedList can be spread', function (t) {
+  const list = linkedList()
+    .push(1)
+    .push(2)
+    .push(3)
+
+  t.deepEqual([...list].map(i => i.value), [1, 2, 3])
+})
