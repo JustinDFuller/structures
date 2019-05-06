@@ -94,6 +94,7 @@ module.exports = function linkedList () {
 
       return list
     },
+    sort (iteratee) {},
     shift () {
       const node = root
       root = node.next || createNode()
@@ -123,6 +124,21 @@ module.exports = function linkedList () {
     },
     first () {
       return root
+    },
+    [Symbol.iterator] () {
+      let node = root
+
+      return {
+        next () {
+          const value = node
+          node = node && node.next
+
+          return {
+            done: value === null,
+            value
+          }
+        }
+      }
     }
   }
 

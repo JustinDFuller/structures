@@ -198,3 +198,43 @@ test('linkedList::shift removes the first node from the list', function (t) {
     next: null
   })
 })
+
+test('linkedList::sort sorts based on the iteratee function', function (t) {
+  t.deepEqual(
+    linkedList()
+      .push(5)
+      .push(2)
+      .push(6)
+      .push(1)
+      .sort((a, b) => a < b)
+      .first(),
+    {
+      value: 1,
+      next: {
+        value: 2,
+        next: {
+          value: 5,
+          next: {
+            value: 6,
+            next: null
+          }
+        }
+      }
+    }
+  )
+})
+
+test('linkedList is an iterator', function (t) {
+  const list = linkedList()
+    .push(1)
+    .push(2)
+    .push(3)
+
+  const results = []
+
+  for (let node of list) {
+    results.push(node.value)
+  }
+
+  t.deepEqual(results, [1, 2, 3])
+})
