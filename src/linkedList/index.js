@@ -26,12 +26,27 @@ function isEmpty (node) {
 
 /**
  * A function that returns a singly linked list.
+ * @example
+ * import linkedList from 'structures/linkedList'
+ *
+ * const myLinkedList = linkedList()
+ *
  * @returns {Object} The linkedList object.
  */
 module.exports = function linkedList () {
   let root = createNode()
 
   const list = {
+    /**
+     * Append a value to the end of the linked list.
+     * This will give a value to the head of the list if it is empty.
+     * @example
+     * const myLinkedList = linkedList().push(1)
+     * // linkedList contains: { value: 1, next: null }
+     *
+     * @param {any} value The value that will be given to the new node.
+     * @returns {Object} The linkedList object.
+     */
     push (value) {
       if (isEmpty(root)) {
         root.value = value
