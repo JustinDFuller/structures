@@ -30,7 +30,6 @@ function isEmpty (node) {
  * import linkedList from 'structures/linkedList'
  *
  * const myLinkedList = linkedList()
- *
  * @returns {Object} The linkedList object.
  */
 module.exports = function linkedList () {
@@ -41,7 +40,6 @@ module.exports = function linkedList () {
      * Append a value to the end of the linked list.
      * This will give a value to the head of the list if it is empty.
      * @memberof module:linkedList
-     * @function
      * @example
      * const myLinkedList = linkedList().push(1)
      * // linkedList contains: { value: 1, next: null }
@@ -77,6 +75,16 @@ module.exports = function linkedList () {
 
       return list
     },
+    /**
+     * Remove nodes from the list where predicate is falsy.
+     * If the last node is falsy it will set its value to undefined.
+     * @memberof module:linkedList
+     * @example
+     * const myLinkedList = linkedList().push(1).push(2).push(3).filter(i => i % 2 === 0)
+     * // linkedList contains { value: 2, next: null }
+     * @param {function ()} predicate Should return a falsy value for any node that should be removed.
+     * @returns {Object} the linkedList object.
+     */
     filter (predicate) {
       let node = root
 
