@@ -199,25 +199,51 @@ test('linkedList::shift removes the first node from the list', function (t) {
   })
 })
 
-test('linkedList::sort sorts based on the iteratee function', function (t) {
+test('linkedList::sort returns the same linkedList if there is only one node', function (t) {
+  t.deepEqual(
+    linkedList()
+      .push(1)
+      .sort()
+      .first(),
+    {
+      value: 1,
+      next: null
+    }
+  )
+})
+
+test('linkedList::sort sorts based on the iteratee function (2 nodes)', function (t) {
   t.deepEqual(
     linkedList()
       .push(5)
       .push(2)
-      .push(6)
-      .push(1)
-      .sort((a, b) => a < b)
+      .sort((a, b) => a - b)
       .first(),
     {
-      value: 1,
+      value: 2,
       next: {
-        value: 2,
+        value: 5,
+        next: null
+      }
+    }
+  )
+})
+
+test('linkedList::sort sorts based on the iteratee function (3 nodes)', function (t) {
+  t.deepEqual(
+    linkedList()
+      .push(5)
+      .push(2)
+      .push(3)
+      .sort((a, b) => a - b)
+      .first(),
+    {
+      value: 2,
+      next: {
+        value: 3,
         next: {
           value: 5,
-          next: {
-            value: 6,
-            next: null
-          }
+          next: null
         }
       }
     }

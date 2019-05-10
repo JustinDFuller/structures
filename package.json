@@ -5,14 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "ava --verbose",
-    "format": "prettier-standard '{src,test}/**/*.js'"
+    "format": "prettier-standard '{src,test}/**/*.js'",
+    "docs": "jsdoc -c config/jsdoc.json"
   },
-  "keywords": ["data","structures"],
+  "keywords": [
+    "data",
+    "structures"
+  ],
   "author": "Justin Fuller <justindanielfuller@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "ava": "^1.4.1",
     "husky": "^2.2.0",
+    "jsdoc": "^3.6.1",
     "lint-staged": "^8.1.5",
     "prettier-standard": "^9.1.1"
   },
@@ -22,11 +27,14 @@
         "prettier-standard",
         "git add"
       ]
-    }  
+    }
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && npm run docs"
     }
+  },
+  "dependencies": {
+    "docdash": "^1.1.0"
   }
 }
