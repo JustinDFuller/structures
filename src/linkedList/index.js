@@ -1,4 +1,9 @@
 /**
+ * @module linkedList
+ */
+
+/**
+ * @private
  * @param {any} value The node value
  * @param {Object} next The node that follows this node in the list.
  * @returns {Object} The created node.
@@ -10,10 +15,19 @@ function createNode (value = undefined, next = null) {
   }
 }
 
+/**
+ * @private
+ * @param {Object} The node to evaluate
+ * @returns {Boolean} If the node is empty.
+ */
 function isEmpty (node) {
   return node.value === undefined && node.next === null
 }
 
+/**
+ * A function that returns a singly linked list.
+ * @returns {Object} The linkedList object.
+ */
 module.exports = function linkedList () {
   let root = createNode()
 
