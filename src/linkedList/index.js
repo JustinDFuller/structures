@@ -58,6 +58,16 @@ module.exports = function linkedList () {
 
       return list
     },
+    /**
+     * Add a value to the beginning of the list.
+     * This will give a value to the head of the list if it is empty.
+     * @memberof module:linkedList
+     * @example
+     * const myLinkedList = linkedList().push(1).prepend(2)
+     * // linkedList contains { value: 2, next: { value: 2, next: null } }
+     * @param {any} value The value that will be given to the new node.
+     * @returns {Object} the linkedList object.
+     */
     prepend (value) {
       if (isEmpty(root)) {
         root.value = value
