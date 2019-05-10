@@ -36,14 +36,12 @@ function isEmpty (node) {
 module.exports = function linkedList () {
   let root = createNode()
 
-  /**
-   * @namespace list
-   */
   const list = {
     /**
      * Append a value to the end of the linked list.
      * This will give a value to the head of the list if it is empty.
-     * @memberof list
+     * @memberof module:linkedList
+     * @function
      * @example
      * const myLinkedList = linkedList().push(1)
      * // linkedList contains: { value: 1, next: null }
