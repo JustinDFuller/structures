@@ -65,7 +65,7 @@ suite
   .add('LinkedList:Reverse', function () {
     linkedListMap.reverse()
   })
-  .add('Array:Map', function () {
+  .add('Array:Reverse', function () {
     arrayMap.reverse()
   })
 
