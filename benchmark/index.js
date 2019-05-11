@@ -11,6 +11,9 @@ let linkedListMap = linkedList()
   .push(3)
 let arrayMap = [1, 2, 3]
 
+console.log('| Data Type | Action | Result |')
+console.log('|-----------|--------|--------|')
+
 suite
   .add('LinkedList:Create', function () {
     linkedList()
@@ -22,14 +25,14 @@ suite
     ;[]
   })
 
-  .add('LinkedList:Unshift: x100 (small array)', function () {
+  .add('LinkedList:Unshift size 100 (small array)', function () {
     const unshift = linkedList()
 
     for (let i = 0; i < 100; i++) {
       unshift.prepend(1)
     }
   })
-  .add('Array:Unshift: x100 (small array)', function () {
+  .add('Array:Unshift size 100 (small array)', function () {
     const unshift = new Array()
 
     for (let i = 0; i < 1000; i++) {
@@ -37,14 +40,14 @@ suite
     }
   })
 
-  .add('LinkedList:Unshift: x10000 (medium array)', function () {
+  .add('LinkedList:Unshift size 10000 (medium array)', function () {
     const unshift = linkedList()
 
     for (let i = 0; i < 10000; i++) {
       unshift.prepend(1)
     }
   })
-  .add('Array:Unshift: x10000 (medium array)', function () {
+  .add('Array:Unshift size 10000 (medium array)', function () {
     const unshift = new Array()
 
     for (let i = 0; i < 10000; i++) {
@@ -59,10 +62,18 @@ suite
     arrayMap.map(i => i / 2)
   })
 
-  .on('cycle', function (event) {
-    console.log(event.target.toString())
+  .add('LinkedList:Reverse', function () {
+    linkedListMap.reverse()
   })
-  .on('complete', function () {
-    console.log('Fastest is ' + this.filter('fastest').map('name'))
+  .add('Array:Map', function () {
+    arrayMap.reverse()
+  })
+
+  .on('cycle', function (event) {
+    const [type, action, result, variance] = event.target
+      .toString()
+      .split(/[:x±]/g)
+      .map(s => s.trim())
+    console.log(`| ${type} | ${action} | ${result} |`)
   })
   .run({ async: true })

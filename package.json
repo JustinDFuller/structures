@@ -6,7 +6,8 @@
   "scripts": {
     "test": "ava --verbose",
     "format": "prettier-standard '{src,test,benchmark}/**/*.js'",
-    "docs": "rm -rf docs && jsdoc -c config/jsdoc.json && git add docs"
+    "docs": "rm -rf docs && jsdoc -c config/jsdoc.json && git add docs",
+    "benchmark": "node ./benchmark"
   },
   "keywords": [
     "data",

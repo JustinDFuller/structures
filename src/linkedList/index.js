@@ -129,6 +129,15 @@ module.exports = function linkedList () {
 
       return mapped
     },
+    /**
+     * Executes an in-place reversal of the nodes in the linked list..
+     * @memberof module:linkedList
+     * @example
+     * const myLinkedList = linkedList().push(1).push(2).push(3)
+     * const reversed = myLinkedList.reverse()
+     * // myLinkedList contains { value: 3, next: { value: 2, next: { value: 1, next: null  } } }
+     * @returns {Object} the linkedList object.
+     */
     reverse () {
       const reversed = linkedList()
 

@@ -21,3 +21,5 @@ Pure JavaScript implementations of common data structures.
 | Array | Unshift size 10000 (medium array) | 63.37 ops/sec |
 | LinkedList | Map | 4,049,021 ops/sec |
 | Array | Map | 7,463,406 ops/sec |
+| LinkedList | Reverse | 2,667,413 ops/sec |
+| Array | Map | 73,975,692 ops/sec |
