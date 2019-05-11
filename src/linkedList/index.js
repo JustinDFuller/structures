@@ -105,6 +105,7 @@ module.exports = function linkedList () {
     },
     /**
      * Creates a new linked list where values are replaced by the result of iteratee.
+     * @memberof module:linkedList
      * @example
      * const myLinkedList = linkedList().push(1).push(2).push(3)
      * const doubledList = myLinkedList.map(i => i * 2)
