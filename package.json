@@ -1,11 +1,11 @@
 {
+  "main": "./src/index.js",
   "name": "structures",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "ava --verbose",
-    "format": "prettier-standard '{src,test}/**/*.js'",
+    "format": "prettier-standard '{src,test,benchmark}/**/*.js'",
     "docs": "rm -rf docs && jsdoc -c config/jsdoc.json && git add docs"
   },
   "keywords": [
@@ -16,6 +16,8 @@
   "license": "ISC",
   "devDependencies": {
     "ava": "^1.4.1",
+    "benchmark": "^2.1.4",
+    "chalk": "^2.4.2",
     "husky": "^2.2.0",
     "jsdoc": "^3.6.1",
     "lint-staged": "^8.1.5",
@@ -23,7 +25,7 @@
   },
   "lint-staged": {
     "linters": {
-      "{src,test}/**/*.js": [
+      "{src,test,benchmark}/**/*.js": [
         "prettier-standard",
         "git add"
       ]

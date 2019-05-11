@@ -103,15 +103,30 @@ module.exports = function linkedList () {
 
       return list
     },
+    /**
+     * Creates a new linked list where values are replaced by the result of iteratee.
+     * @example
+     * const myLinkedList = linkedList().push(1).push(2).push(3)
+     * const doubledList = myLinkedList.map(i => i * 2)
+     * // list contains { value: 2, next: { value: 4, next{ value: 6, next: null } } }
+     * @param {function ()} iteratee The function that will return a new value.
+     * @returns {Object} A new linkedList object.
+     */
     map (iteratee) {
+      const mapped = linkedList()
+      let mappedTail = mapped.first()
       let node = root
 
+      mappedTail.value = iteratee(node.value)
+      node = node.next
+
       while (node) {
-        node.value = iteratee(node.value)
+        mappedTail.next = createNode(iteratee(node.value))
+        mappedTail = mappedTail.next
         node = node.next
       }
 
-      return list
+      return mapped
     },
     reverse () {
       const reversed = linkedList()
@@ -207,7 +222,7 @@ module.exports = function linkedList () {
 
       // root = mergeSort(root, null)
 
-      console.log([...list].map(i => i.value))
+      // console.log([...list].map(i => i.value))
 
       return list
     },
