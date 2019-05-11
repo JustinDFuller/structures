@@ -12,11 +12,12 @@ Pure JavaScript implementations of common data structures.
 
 | Data Type | Action | Result |
 |-----------|--------|--------|
-|LinkedList |Create  | 633,622,772 ops/sec
-|Array      |Create  | 675,798,560 ops/sec
-|LinkedList |Unshift: x100 (small array) | 453,089 ops/sec
-|Array      |Unshift: x100 (small array) | 4,870 ops/sec
-|LinkedList |Unshift: x10000 (medium array) | 5,411 ops/sec
-|Array      |Unshift: x10000 (medium array) | 60 ops/sec
-|LinkedList |Map | 3,800,345 ops/sec
-|Array      |Map | 7,238,311 ops/sec
+| LinkedList | Create | 636,005,665 ops/sec |
+| Array | Create | 680,172,678 ops/sec |
+| Array | CreateLiteral | 671,661,559 ops/sec |
+| LinkedList | Unshift size 100 (small array) | 460,460 ops/sec |
+| Array | Unshift size 100 (small array) | 5,802 ops/sec |
+| LinkedList | Unshift size 10000 (medium array) | 5,550 ops/sec |
+| Array | Unshift size 10000 (medium array) | 63.37 ops/sec |
+| LinkedList | Map | 4,049,021 ops/sec |
+| Array | Map | 7,463,406 ops/sec |
