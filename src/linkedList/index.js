@@ -141,11 +141,11 @@ module.exports = function linkedList () {
     reverse () {
       const reversed = linkedList()
 
-      let node = list.shift()
+      let node = list.first()
 
       while (node) {
         reversed.prepend(node.value)
-        node = node.next ? list.shift() : null
+        node = node.next
       }
 
       root = reversed.first()
