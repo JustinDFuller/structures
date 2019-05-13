@@ -32,9 +32,7 @@ function isEmpty (node) {
  * const myLinkedList = linkedList()
  * @returns {Object} The linkedList object.
  */
-module.exports = function linkedList () {
-  let root = createNode()
-
+module.exports = function linkedList (root = createNode()) {
   const list = {
     /**
      * Append a value to the end of the linked list.

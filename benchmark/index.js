@@ -69,6 +69,17 @@ suite
     arrayMap.reverse()
   })
 
+  .add('LinkedList:shift', function () {
+    linkedList({
+      value: 1,
+      next: { value: 2, next: { value: 3, next: null } }
+    }).shift()
+  })
+  .add('Array:shift', function () {
+    let arr = [1, 2, 3]
+    arr.shift()
+  })
+
   .on('cycle', function (event) {
     const [type, action, result, variance] = event.target
       .toString()
