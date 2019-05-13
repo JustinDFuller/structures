@@ -152,6 +152,17 @@ module.exports = function linkedList () {
 
       return list
     },
+    /**
+     * Inserts a new node, with the given value, after the node that predicate returns truthy for.
+     * @memberof module:linkedList
+     * @example
+     * const myLinkedList = linkedList().push(1).push(3)
+     * myLinkedList.insert(i => i === 1, 2)
+     * // myLinkedList contains { value: 1, next: { value: 2, next: { value: 3, next: null } } }
+     * @param {function ()} predicate Determines where to insert the given value.
+     * @param {any} value The value to insert.
+     * @returns {Object} the linkedList object.
+     */
     insert (predicate, value) {
       let node = root
 
@@ -166,6 +177,15 @@ module.exports = function linkedList () {
 
       return list
     },
+    /**
+     * Creates a linked list from an array.
+     * @memberof module:linkedList
+     * @example
+     * const myLinkedList = linkedList().from([1,2,3])
+     * // myLinkedList contains { value: 1, next: { value: 2, next: { value: 3, next: null } } }
+     * @param {any[]} array An array of values to add to the linked list.
+     * @returns {Object} the linkedList object.
+     */
     from (array) {
       for (let i = array.length - 1; i >= 0; i--) {
         list.prepend(array[i])
@@ -236,6 +256,15 @@ module.exports = function linkedList () {
 
       return list
     },
+    /**
+     * Remove the first node and return it.
+     * @memberof module:linkedList
+     * @example
+     * const myLinkedList = linkedList().push(1).push(2)
+     * const head = myLinkedList.shift().value // 1
+     * // myLinkedList contains { value: 2, next: null  }
+     * @returns {Object} the first node in the list.
+     */
     shift () {
       const node = root
       root = node.next || createNode()
