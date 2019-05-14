@@ -25,3 +25,5 @@ Pure JavaScript implementations of common data structures.
 | Array | Reverse | 73,586,388 ops/sec |
 | LinkedList | shift | 4,315,241 ops/sec |
 | Array | shift | 32,082,206 ops/sec |
+| LinkedList | filter | 3,633,319 ops/sec |
+| Array | filter | 23,119,968 ops/sec |

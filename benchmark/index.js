@@ -80,6 +80,16 @@ suite
     arr.shift()
   })
 
+  .add('LinkedList:filter', function () {
+    linkedList({
+      value: 1,
+      next: { value: 2, next: { value: 3, next: null } }
+    }).filter(i => i % 2 === 0)
+  })
+  .add('Array:filter', function () {
+    ;[1, 2, 3].filter(i => i % 2 === 0)
+  })
+
   .on('cycle', function (event) {
     const [type, action, result, variance] = event.target
       .toString()
