@@ -5,6 +5,7 @@ const { linkedList } = require('../')
 
 const suite = new Benchmark.Suite()
 
+let start = new Date()
 let linkedListMap = linkedList()
   .push(1)
   .push(2)
@@ -13,6 +14,11 @@ let arrayMap = [1, 2, 3]
 
 console.log('| Data Type | Action | Result |')
 console.log('|-----------|--------|--------|')
+
+let linkedListActionCount = 0
+let benchmarkList = linkedList()
+let arrayActionCount = 0
+let benchmarkArray = []
 
 suite
   .add('LinkedList:Create', function () {
@@ -26,32 +32,40 @@ suite
   })
 
   .add('LinkedList:Unshift size 100 (small array)', function () {
-    const unshift = linkedList()
+    benchmarkList.prepend(1)
+    linkedListActionCount++
 
-    for (let i = 0; i < 100; i++) {
-      unshift.prepend(1)
+    if (linkedListActionCount === 100) {
+      benchmarkList = linkedList()
+      linkedListActionCount = 0
     }
   })
   .add('Array:Unshift size 100 (small array)', function () {
-    const unshift = new Array()
+    benchmarkArray.unshift(1)
+    arrayActionCount++
 
-    for (let i = 0; i < 1000; i++) {
-      unshift.unshift(1)
+    if (arrayActionCount === 100) {
+      benchmarkArray = []
+      arrayActionCount = 0
     }
   })
 
-  .add('LinkedList:Unshift size 10000 (medium array)', function () {
-    const unshift = linkedList()
+  .add('LinkedList:Unshift size 100000 (medium array)', function () {
+    benchmarkList.prepend(1)
+    linkedListActionCount++
 
-    for (let i = 0; i < 10000; i++) {
-      unshift.prepend(1)
+    if (linkedListActionCount === 100000) {
+      benchmarkList = linkedList()
+      linkedListActionCount = 0
     }
   })
-  .add('Array:Unshift size 10000 (medium array)', function () {
-    const unshift = new Array()
+  .add('Array:Unshift size 100000 (medium array)', function () {
+    benchmarkArray.unshift(1)
+    arrayActionCount++
 
-    for (let i = 0; i < 10000; i++) {
-      unshift.unshift(1)
+    if (arrayActionCount === 100000) {
+      benchmarkArray = []
+      arrayActionCount = 0
     }
   })
 
@@ -90,11 +104,58 @@ suite
     ;[1, 2, 3].filter(i => i % 2 === 0)
   })
 
+  .add('LinkedList:push size 100 (small array)', function () {
+    benchmarkList.push(1)
+    linkedListActionCount++
+
+    if (linkedListActionCount === 100) {
+      benchmarkList = linkedList()
+      linkedListActionCount = 0
+    }
+  })
+  .add('Array:push size 100 (small array)', function () {
+    benchmarkArray.push(1)
+    arrayActionCount++
+
+    if (arrayActionCount === 100) {
+      benchmarkArray = []
+      arrayActionCount = 0
+    }
+  })
+
+  .add('LinkedList:push size 100000 (medium array)', function () {
+    benchmarkList.push(1)
+    linkedListActionCount++
+
+    if (linkedListActionCount === 100000) {
+      benchmarkList = linkedList()
+      linkedListActionCount = 0
+    }
+  })
+  .add('Array:push size 100000 (medium array)', function () {
+    benchmarkArray.push(1)
+    arrayActionCount++
+
+    if (arrayActionCount === 100000) {
+      benchmarkArray = []
+      arrayActionCount = 0
+    }
+  })
+
   .on('cycle', function (event) {
     const [type, action, result, variance] = event.target
       .toString()
       .split(/[:x±]/g)
       .map(s => s.trim())
     console.log(`| ${type} | ${action} | ${result} |`)
+    // resets
+    benchmarkArray = []
+    benchmarkList = linkedList()
+    arrayActionCount = 0
+    linkedListActionCount = 0
+  })
+
+  .on('complete', function () {
+    console.log(`Took ${new Date() - start}`)
   })
   .run({ async: true })
