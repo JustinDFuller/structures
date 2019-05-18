@@ -69,11 +69,15 @@ suite
     }
   })
 
-  .add('LinkedList:Map', function () {
-    linkedListMap.map(i => i / 2)
+  .add('LinkedList:Map', function linkedListMapFn () {
+    linkedListMap.map(function innerMap (i) {
+      return i
+    })
   })
-  .add('Array:Map', function () {
-    arrayMap.map(i => i / 2)
+  .add('Array:Map', function linkedListMapFn () {
+    arrayMap.map(function innerMap (i) {
+      return i
+    })
   })
 
   .add('LinkedList:Reverse', function () {
@@ -158,4 +162,7 @@ suite
   .on('complete', function () {
     console.log(`Took ${new Date() - start}`)
   })
-  .run({ async: true })
+  .on('error', function (e) {
+    console.error(e.error)
+  })
+  .run()

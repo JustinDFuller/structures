@@ -46,7 +46,7 @@ module.exports = function linkedList (root = createNode()) {
      * @returns {Object} The linkedList object.
      */
     push (value) {
-      if (isEmpty(root)) {
+      if (isEmpty(root) === true) {
         root.value = value
       } else {
         list.last().next = createNode(value)
@@ -65,7 +65,7 @@ module.exports = function linkedList (root = createNode()) {
      * @returns {Object} the linkedList object.
      */
     prepend (value) {
-      if (isEmpty(root)) {
+      if (isEmpty(root) === true) {
         root.value = value
       } else {
         root = createNode(value, root)
@@ -86,9 +86,9 @@ module.exports = function linkedList (root = createNode()) {
     filter (predicate) {
       let node = root
 
-      while (node) {
-        if (!predicate(node.value)) {
-          if (node.next) {
+      while (node !== null) {
+        if (predicate(node.value) === false) {
+          if (node.next !== null) {
             node.value = node.next.value
             node.next = node.next.next
           } else {
@@ -119,7 +119,7 @@ module.exports = function linkedList (root = createNode()) {
       mappedTail.value = iteratee(node.value)
       node = node.next
 
-      while (node) {
+      while (node !== null) {
         mappedTail.next = createNode(iteratee(node.value))
         mappedTail = mappedTail.next
         node = node.next
@@ -141,7 +141,7 @@ module.exports = function linkedList (root = createNode()) {
 
       let node = list.first()
 
-      while (node) {
+      while (node !== null) {
         reversed.prepend(node.value)
         node = node.next
       }
@@ -164,8 +164,8 @@ module.exports = function linkedList (root = createNode()) {
     insert (predicate, value) {
       let node = root
 
-      while (node) {
-        if (predicate(node.value)) {
+      while (node !== null) {
+        if (predicate(node.value) === true) {
           node.next = createNode(value, node.next)
           break
         }
@@ -210,7 +210,7 @@ module.exports = function linkedList (root = createNode()) {
             tailNode = tailNode.next
           }
 
-          if (isEmpty(sortedNode)) {
+          if (isEmpty(sortedNode) === true) {
             sortedNode.value = toAppend.value
           } else {
             sortedNode.next = createNode(toAppend.value)
@@ -265,14 +265,14 @@ module.exports = function linkedList (root = createNode()) {
      */
     shift () {
       const node = root
-      root = node.next || createNode()
+      root = node.next === null ? createNode() : node.next
       return node
     },
     find (predicate) {
       let node = root
 
-      while (node) {
-        if (predicate(node.value)) {
+      while (node !== null) {
+        if (predicate(node.value) === true) {
           break
         }
 
@@ -284,7 +284,7 @@ module.exports = function linkedList (root = createNode()) {
     last () {
       let node = root
 
-      while (node.next) {
+      while (node.next !== null) {
         node = node.next
       }
 
@@ -300,7 +300,7 @@ module.exports = function linkedList (root = createNode()) {
         next () {
           const value = nextNode
 
-          if (nextNode) {
+          if (nextNode !== null) {
             nextNode = nextNode.next
           }
 
