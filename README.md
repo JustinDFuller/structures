@@ -1,5 +1,7 @@
 # Structures
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/JustinDFuller/structures.svg)](https://greenkeeper.io/)
+
 Pure JavaScript implementations of common data structures.
 
 ## Available Structures
