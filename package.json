@@ -16,13 +16,13 @@
   "author": "Justin Fuller <justindanielfuller@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "ava": "^1.4.1",
+    "ava": "^2.3.0",
     "benchmark": "^2.1.4",
     "chalk": "^2.4.2",
-    "husky": "^2.2.0",
+    "husky": "^3.0.5",
     "jsdoc": "^3.6.1",
-    "lint-staged": "^8.1.5",
-    "prettier-standard": "^9.1.1"
+    "lint-staged": "^9.2.5",
+    "prettier-standard": "^14.0.3"
   },
   "lint-staged": {
     "linters": {
